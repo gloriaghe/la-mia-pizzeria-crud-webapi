@@ -3,8 +3,6 @@
     public interface IPizzeriaRepository
     {
         List<Pizza> All();
-        List<Pizza> AllPizzaAndData();
-
         List<Category> AllCat();
         
          List<Ingredient> AllIng();

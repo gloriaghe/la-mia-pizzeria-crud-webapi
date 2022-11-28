@@ -13,13 +13,10 @@ namespace la_mia_pizzeria_static.Models.Repositories
         {
             db = new PizzaDbContext();
         }
-        public List<Pizza> AllPizzaAndData()
-        {
-            return db.Pizzas.Include(pizza => pizza.Category).Include("Ingredients").ToList();
-        }
+       
         public List<Pizza> All()
         {
-            return AllPizzaAndData();
+            return db.Pizzas.Include(pizza => pizza.Category).Include("Ingredients").ToList();
         }
         
         public List<Category> AllCat()

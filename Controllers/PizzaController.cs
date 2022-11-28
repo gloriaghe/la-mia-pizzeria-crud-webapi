@@ -27,7 +27,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Index()
         {
-            List<Pizza> listaPizze = pizzeria.AllPizzaAndData();
+            List<Pizza> listaPizze = pizzeria.All();
             return View(listaPizze);
         }
 

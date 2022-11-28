@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 
-    axios.get('/api/pizza/get').then(res =>{
+    axios.get('/api/pizza/get').then(res => {
 
         if (res.data.length == 0) {
 
@@ -31,23 +31,24 @@
 
                 document.querySelector('.js_pizza_table').innerHTML +=
                     `
-                                                    <div class="col-12 col-md-4 p-2">
-                                <div class="card pizza h-100">
-                                  <img src="${pizza.image}" class="card-img-top" alt="...">
-                                  <div class="card-body" style="color:black">
-                                    <h5 class="card-title">${pizza.name}</h5>
-                                    <p class="card-text">${pizza.description}</p>
-                                  </div>
-                                </div>
-                            </div>
-                            `;
+                                                            <div class="col-12 col-md-4 p-2">
+                                        <div class="card pizza h-100">
+                                          <img src="${pizza.image}" class="card-img-top" alt="...">
+                                          <div class="card-body" style="color:black">
+                                            <h5 class="card-title">${pizza.name}</h5>
+                                            <p class="card-text">${pizza.description}</p>
+
+                                          </div>
+                                        </div>
+                                    </div>
+                                    `;
             });
         }
 
 
-        }).catch(error => {
-            debugger;
-            console.log(error);
-        })
+    }).catch(error => {
+        debugger;
+        console.log(error);
+    })
 
 </script>
