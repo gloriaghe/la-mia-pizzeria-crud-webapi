@@ -7,32 +7,31 @@
 
 <script type="text/javascript">
 
-    axios.get('/api/pizza/detail/').then(res => {
+    axios.get('/api/pizza/detail/2').then(res => {
         console.log(res);
         document.querySelector('.js_pizza_table').innerHTML +=
             `
                  
-                                     <div class="detailPizza d-flex justify-content-center " >
-                                     <div class="card d-flex flex-row align-items-center text-center" style="width: 70%">
-                                     <img src="${res.data.image}" class="card-img-top" alt="${res.data.name}">
-                                         <div class="card-body d-flex flex-column justify-content-center" style="margin-right:20px;color:#219ebc">
-                                            <h3 class="text-uppercase">${res.data.name}</h3>
-                                            <p class="card-text">${res.data.description}</p>
-                                                <span><strong>Costo: </strong>${res.data.price} Euro</span>
-                                            <br />
-                                             <strong class="mt-3">INGREDIENTI:</strong>
-
-                                              <div class="ing"></div>
-                                                    <span  class="mt-3"><strong>Categoria: </strong>${res.data.category.name}</span>
-
-                                         </div>
-                                </div>
-                            </div>
+            <div class="detailPizza d-flex justify-content-center " >
+                <div class="card d-flex flex-row align-items-center text-center" style="width: 70%">
+                    <img src="${res.data.image}" class="card-img-top" alt="${res.data.name}">
+                    <div class="card-body d-flex flex-column justify-content-center" style="margin-right:20px;color:#219ebc">
+                        <h3 class="text-uppercase">${res.data.name}</h3>
+                        <p class="card-text">${res.data.description}</p>
+                        <span><strong>Costo: </strong>${res.data.price} Euro</span>
+                        <br />
+                        <strong class="mt-3">INGREDIENTI:</strong>
+                        <div class="ing">
+                              <span class="mt-3"><strong>Categoria: </strong>${res.data.category.name}</span>
+                        </div>
+                    </div>
+                 </div>
+            </div>
                         
             `
         res.data.ingredients.forEach(ing => {
             document.querySelector('.ing').innerHTML +=
-                `<h6>${ing.name}</h6>`
+                `<span>${ing.name}</span></br>`
         })
             ;
     }).catch(error => {
