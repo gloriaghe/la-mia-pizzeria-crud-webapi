@@ -27,3 +27,15 @@ Errore migration:
 //inserito in programs.cs
     builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
+
+    Per utilizzare l'include nei json installare:
+
+    1. dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0
+
+
+    E mettere nel file Program.cs:
+    builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
