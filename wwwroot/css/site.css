@@ -1,0 +1,66 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #219ebc;
+    height: 100vh;
+    color: white;
+}
+
+header {
+    background-color: #0086a7;
+}
+
+img {
+    object-fit: cover;
+}
+
+#containerPizzeria {
+    height: 100%;
+}
+
+/*tabella index*/
+table tr {
+    color: white;
+}
+#titleTable {
+    color: #abeeff;
+}
+
+#detailPizza {
+    color: #219ebc;
+    margin-top: 40px;
+}
+
+    #detailPizza img {
+        margin: 20px;
+        width: 400px;
+        height: 400px;
+        border-radius: 30px;
+    }
+
+table .btn {
+    color: white;
+    font-weight: bolder;
+    width: 100px;
+}
+table .btn:hover {
+    color: white;
+}
+
+footer a, footer div {
+    color: white;
+}
