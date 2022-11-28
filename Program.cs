@@ -13,8 +13,8 @@ builder.Services.AddRazorPages()
 
 
 //senza server usa le liste pizze
-builder.Services.AddScoped<IPizzeriaRepository, InMemoryPizzaRepository>();
-//builder.Services.AddScoped<IPizzeriaRepository, DbPizzeriaRepository>();
+//builder.Services.AddScoped<IPizzeriaRepository, InMemoryPizzaRepository>();
+builder.Services.AddScoped<IPizzeriaRepository, DbPizzeriaRepository>();
 
 var app = builder.Build();
 
@@ -36,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+    pattern: "{controller=Guest}/{action=Index}/{id?}");
 
 app.Run();

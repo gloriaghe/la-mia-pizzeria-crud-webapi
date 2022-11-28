@@ -16,7 +16,10 @@ namespace la_mia_pizzeria_static.Models.Repositories
         {
             return Pizzas;
         }
-
+        public List<Pizza> AllPizzaAndData()
+        {
+            return Pizzas;
+        }
 
         public void Create(Pizza pizza, List<int> selectedIngredients)
         {
