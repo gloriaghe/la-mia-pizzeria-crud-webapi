@@ -7,7 +7,7 @@ namespace la_mia_pizzeria_static.Controllers.Api
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PizzaController : ControllerBase 
+    public class PizzaController : ControllerBase
     {
         IPizzeriaRepository _pizzeriaRepository;
 
@@ -20,6 +20,12 @@ namespace la_mia_pizzeria_static.Controllers.Api
             List<Pizza> pizzas = _pizzeriaRepository.All();
             return Ok(pizzas);
         }
-        
+
+        [HttpGet("{id:int}")]
+        public IActionResult Detail(int id)
+        {
+            Pizza pizza = _pizzeriaRepository.getID(id);
+            return Ok(pizza);
+        }
     }
 }

@@ -34,14 +34,15 @@
                         <div class="col-12 col-md-4 p-2">
                              <div class="detailPizzaGuest" class="d-flex " >
                                  <div class="card d-flex flex-column flex-row align-items-center text-center" >
-                                     <img src="${pizza.image}" class="card-img-top" alt="${pizza.name}">
-                                         <div class="card-body d-flex flex-column justify-content-center" style="margin-right:20px;color:#219ebc">
-                                            <h3 class="text-uppercase">${pizza.name}</h3>
-                                            <p class="card-text">${pizza.description}</p>
-                                            <strong>Costo: ${pizza.price} Euro</strong>
-                                            <br />
-                                            <span><strong>Categoria: </strong>Categoria: ${pizza.category.name}</span>               
-                                         </div>
+                                    <img src="${pizza.image}" class="card-img-top" alt="${pizza.name}">
+                                    <div class="card-body d-flex flex-column justify-content-center" style="margin-right:20px;color:#219ebc">
+                                        <h3 class="text-uppercase">${pizza.name}</h3>
+                                        <p class="card-text">${pizza.description}</p>
+                                        <strong>Costo: ${pizza.price} Euro</strong>
+                                        <br />
+                                        <span><strong>Categoria: </strong>Categoria: ${pizza.category.name}</span>
+                                        <a class="btn btn-info mt-3" href="/guest/detail/${pizza.id}" style="width:100px">DETTAGLI</a>
+                                    </div>
                                 </div>
                             </div>
                          </div>
