@@ -31,17 +31,18 @@
 
                 document.querySelector('.js_pizza_table').innerHTML +=
                     `
-                                                            <div class="col-12 col-md-4 p-2">
-                                        <div class="card pizza h-100">
-                                          <img src="${pizza.image}" class="card-img-top" alt="...">
-                                          <div class="card-body" style="color:black">
-                                            <h5 class="card-title">${pizza.name}</h5>
-                                            <p class="card-text">${pizza.description}</p>
-
-                                          </div>
-                                        </div>
+                                                        <div class="col-12 col-md-4 p-2">
+                                    <div class="card pizza h-100">
+                                      <img src="${pizza.image}" class="card-img-top" alt="...">
+                                      <div class="card-body" style="color:black">
+                                        <h5 class="card-title">${pizza.name}</h5>
+                                        <p class="card-text">${pizza.description}</p>
+                                        <p class="card-text">Categoria: ${pizza.category.name}</p>
+   
+                                      </div>
                                     </div>
-                                    `;
+                                </div>
+                                `;
             });
         }
 
