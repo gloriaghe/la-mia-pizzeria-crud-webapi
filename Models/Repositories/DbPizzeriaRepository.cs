@@ -19,7 +19,7 @@ namespace la_mia_pizzeria_static.Models.Repositories
         }
         public List<Pizza> All()
         {
-            return db.Pizzas.ToList();
+            return AllPizzaAndData();
         }
         
         public List<Category> AllCat()

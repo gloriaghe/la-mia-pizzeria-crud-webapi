@@ -1,4 +1,5 @@
 using la_mia_pizzeria_static.Models.Repositories;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 
 //inserito noi
 builder.Services.AddRazorPages()
@@ -17,6 +23,7 @@ builder.Services.AddRazorPages()
 builder.Services.AddScoped<IPizzeriaRepository, DbPizzeriaRepository>();
 
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
