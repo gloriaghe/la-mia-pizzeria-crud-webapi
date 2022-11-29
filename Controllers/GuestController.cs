@@ -13,9 +13,11 @@ namespace la_mia_pizzeria_static.Controllers
             ViewData["title"] = "Home";
             return View();
         }
-        public IActionResult Detail()
+        public IActionResult Detail(int id)
         {
-            return View();
+            ViewData["title"] = "Dettaglio Pizza";
+
+            return View(id);
         }
         public IActionResult About()
         {
