@@ -1,4 +1,6 @@
-﻿namespace la_mia_pizzeria_static.Models.Repositories
+﻿using Microsoft.Extensions.Hosting;
+
+namespace la_mia_pizzeria_static.Models.Repositories
 {
     public interface IPizzeriaRepository
     {
@@ -36,7 +38,9 @@
          void UpdateIng(Ingredient ingredient);
         
          void DeleteIng(Ingredient ingredient);
-        
+
+        List<Pizza> SearchByName(string? name);
+
     }
 
 

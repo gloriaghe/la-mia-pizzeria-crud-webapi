@@ -1,4 +1,9 @@
-﻿<div class="row js_no_pizza text-center d-none">
+﻿
+<div>
+    <input id="user_search" type="text" placeholder="Cerca per nome" style="width:300px" class="mt-5 js_search form-control" />
+</div>
+
+<div class="row js_no_pizza text-center d-none">
     <div class="col-12">
         <h3>Non hai inserito alcuna pizza</h3>
     </div>
@@ -8,6 +13,99 @@
 </div>
 
 @section Scripts{
+
+    <script type="text/javascript">
+
+        document.querySelector(".js_search").addEventListener('keyup', OnUserInputEvent);
+
+        var timeoutId = null;
+
+        function OnUserInputEvent(e) {
+
+            let query = e.target.value;
+
+            if (timeoutId != null)
+                clearTimeout(timeoutId);
+
+            timeoutId = setTimeout(() => {
+
+                axios.get('/api/pizza/search', {
+                    params: {
+                        name: query
+                    }
+                }).then(response => {
+
+                    RenderPizza(response.data);
+
+                }).catch(error => {
+                    console.log(error);
+                })
+
+            }, 300);
+
+
+
+        }
+
+        //function OnUserInput(obj){
+        //    console.log(obj.value);
+        //}
+
+        console.log("dopo", document.querySelector(".js_search").value);
+
+        axios.get('/api/pizza/get').then(res => {
+
+            RenderPizza(res.data);
+
+
+        }).catch(error => {
+            //debugger;
+            console.log(error);
+        })
+
+
+        function RenderPizza(data) {
+            if (data.length == 0) {
+
+                document.querySelector('.js_no_pizza').classList.remove('d-none');
+                document.querySelector('.js_pizza_table').classList.add('d-none');
+
+            } else {
+
+                document.querySelector('.js_pizza_table').classList.remove('d-none');
+                document.querySelector('.js_no_pizza').classList.add('d-none');
+
+                document.querySelector('.js_pizza_table').innerHTML = '';
+
+                data.forEach(pizza => {
+
+                    console.log('pizza', pizza);
+
+                    document.querySelector('.js_pizza_table').innerHTML +=
+                        `
+                                <div class="col-12 col-md-4 p-2">
+                                     <div class="detailPizzaGuest" class="d-flex " >
+                                         <div class="card d-flex flex-column flex-row align-items-center text-center" >
+                                            <img src="${pizza.image}" class="card-img-top" alt="${pizza.name}">
+                                            <div class="card-body d-flex flex-column justify-content-center" style="margin-right:20px;color:#219ebc">
+                                                <h3 class="text-uppercase">${pizza.name}</h3>
+                                                <p class="card-text">${pizza.description}</p>
+                                                <strong>Costo: ${pizza.price} Euro</strong>
+                                                <br />
+                                                <span><strong>Categoria: </strong>Categoria: ${pizza.category.name}</span>
+                                                <a class="btn btn-info mt-3" href="/guest/detail/${pizza.id}">DETTAGLI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            `;
+                });
+            }
+        }
+
+    </script>
+}
+@*@section Scripts{
 
 <script type="text/javascript">
 
@@ -57,4 +155,4 @@
     })
 
 </script>
-}
+}*@

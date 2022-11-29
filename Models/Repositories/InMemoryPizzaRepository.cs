@@ -186,5 +186,11 @@ namespace la_mia_pizzeria_static.Models.Repositories
         {
             Ingredients.Remove(ingredient);
         }
+
+        public List<Pizza> SearchByName(string? name)
+        {
+            
+            return null;
+        }
     }
 }
