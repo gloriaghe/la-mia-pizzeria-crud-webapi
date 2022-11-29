@@ -62,12 +62,12 @@ table tr {
         height: 400px;
         border-radius: 30px;
     }
-table .btn {
+ .btn {
     color: white;
     font-weight: bolder;
-    width: 100px;
+    width: 120px;
 }
-table .btn:hover {
+ .btn:hover {
     color: white;
 }
 

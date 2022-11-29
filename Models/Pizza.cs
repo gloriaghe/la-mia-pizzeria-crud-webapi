@@ -1,5 +1,6 @@
 ﻿using la_mia_pizzeria_static.Validation;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
