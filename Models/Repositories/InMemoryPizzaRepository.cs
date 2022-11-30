@@ -9,6 +9,8 @@ namespace la_mia_pizzeria_static.Models.Repositories
         public static List<Pizza> Pizzas = new List<Pizza>();
         public static List<Category> Categories = new List<Category>();
         public static List<Ingredient> Ingredients = new List<Ingredient>();
+        public static List<Message> Messages = new List<Message>();
+
         private static int counter = 1;
 
 
@@ -190,12 +192,20 @@ namespace la_mia_pizzeria_static.Models.Repositories
         public List<Pizza> SearchByName(string? name)
         {
 
-            return null;
+            if (name == null)
+                return Pizzas.ToList();
+
+            return Pizzas.Where(p => p.Name.ToLower().Contains(name.ToLower())).ToList();
         }
 
         public void NewMessage(Message message)
         {
-            //
+            message.Id = counter;
+            counter++;
+
+            Messages.Add(message);
+            Console.WriteLine("name: " + message.Name + " Email: " + message.Email + " Title: " + message.Title + " Text: " +message.Text);
+
         }
     }
 }
