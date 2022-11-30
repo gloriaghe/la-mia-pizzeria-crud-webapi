@@ -135,6 +135,12 @@ namespace la_mia_pizzeria_static.Models.Repositories
 
             return query.Where(p => p.Name.ToLower().Contains(name.ToLower())).ToList();
         }
+
+        public void NewMessage(Message message)
+        {
+            db.Messages.Add(message);
+            db.SaveChanges();
+        }
     }
 
 }

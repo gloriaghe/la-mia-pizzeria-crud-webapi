@@ -16,7 +16,7 @@ namespace la_mia_pizzeria_static.Models.Repositories
         {
             return Pizzas;
         }
-        
+
 
         public void Create(Pizza pizza, List<int> selectedIngredients)
         {
@@ -189,8 +189,13 @@ namespace la_mia_pizzeria_static.Models.Repositories
 
         public List<Pizza> SearchByName(string? name)
         {
-            
+
             return null;
+        }
+
+        public void NewMessage(Message message)
+        {
+            //
         }
     }
 }

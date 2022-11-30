@@ -41,6 +41,7 @@ namespace la_mia_pizzeria_static.Models.Repositories
 
         List<Pizza> SearchByName(string? name);
 
+        void NewMessage(Message message);
     }
 
 
