@@ -5,18 +5,26 @@
             <div class="mb-3">
                 <label for="contact-email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="contact-email">
+                <div id="errorMail"></div>
+
             </div>
             <div class="mb-3">
                 <label for="contact-name" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="contact-name">
+                <div id="errorName"></div>
+
             </div>
             <div class="mb-3">
                 <label for="contact-title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="contact-title">
+                <div id="errorTitle"></div>
+
             </div>
             <div class="mb-3">
                 <label for="contact-text" class="form-label">Testo messaggio</label>
                 <textarea class="form-control" id="contact-text" rows="10"></textarea>
+                <div id="errorText"></div>
+
             </div>
             <input type="submit" class="btn btn-primary" value="Invia" />
         </form>
@@ -26,10 +34,18 @@
 @section Scripts{
 
     <script type="text/javascript">
+        function clear() {
 
+            document.getElementById('errorMail').innerHTML = "";
+            document.getElementById('errorName').innerHTML = "";
+            document.getElementById('errorTitle').innerHTML = "";
+            document.getElementById('errorText').innerHTML = "";
+
+        }
         function inviaMessaggio(e) {
 
             e.preventDefault();
+            clear();
 
             axios.post('/api/message', {
                 email: document.querySelector('#contact-email').value,
@@ -38,17 +54,27 @@
                 text: document.querySelector('#contact-text').value,
             }).then(res => {
 
-                swal("Messaggio inserito correttamente!", "success");
+                swal("Perfetto!", "Il tuo messaggio è stato inviato!", "success");
 
-                //document.querySelector('#contact-email').value = '';
-                //document.querySelector('#contact-name').value = '';
                 document.querySelector('#contact-title').value = '';
                 document.querySelector('#contact-text').value = '';
+                clear();
 
             }).catch(error => {
+                if (error.response.data.errors.Name != undefined) {
+                    document.getElementById('errorName').innerHTML += error.response.data.errors.Name;
+                }
+                if (error.response.data.errors.Title != undefined) {
+                document.getElementById('errorTitle').innerHTML += error.response.data.errors.Title;
+                }
+                if (error.response.data.errors.Text != undefined) {
+                document.getElementById('errorText').innerHTML += error.response.data.errors.Text;
+                }
+                for (let i = 0; i < error.response.data.errors.Email.length; i++) {
+                    document.getElementById('errorMail').innerHTML += error.response.data.errors.Email[i] + "</br>";
+                };
+               
 
-
-                console.log(error.response.data.errors);
             })
 
         }

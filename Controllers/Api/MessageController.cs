@@ -18,8 +18,7 @@ namespace la_mia_pizzeria_static.Controllers.Api
         public IActionResult Create(Message message)
         {
             _pizzeriaRepository.NewMessage(message);
-            //_pizzeriaRepository.Messages.Add(message);
-            //_pizzeriaRepository.SaveChanges();
+           
             return Ok(message);
         }
     }
